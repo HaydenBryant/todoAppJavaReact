@@ -1,4 +1,4 @@
-package com.in28minutes.rest.webservice.restfulwebservices;
+package com.in28minutes.rest.webservice.restfulwebservices.helloworld;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +21,8 @@ public class HelloWorldController {
     }
 
     @GetMapping(path = "/hello-world/path-variable/{name}")
-    public HelloWorldBean helloWorldBean(@PathVariable String name) {
-        return new HelloWorldBean(String.format("Hello World, %s", name));
+    public HelloWorldBean helloWorldPathVariable(@PathVariable String name) {
+        throw new RuntimeException("something went wrong");
+//        return new HelloWorldBean(String.format("Hello World, %s", name));
     }
-
 }
