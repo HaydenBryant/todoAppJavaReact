@@ -1,11 +1,16 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import HelloWorldService from '../../api/HelloWorldService'
+import HelloWorldService from '../../api/todo/HelloWorldService.js'
 
 class Welcome extends Component{
     constructor(props) {
         super(props)
         this.retrieveWelcomeMessage = this.retrieveWelcomeMessage.bind(this)
+        this.state ={
+            welcomeMessage : ""
+        }
+        this.handleSuccessfulResponse = this.handleSuccessfulResponse.bind(this)
+        this.handleError = this.handleError.bind(this)
     }
 
     render() {
@@ -21,6 +26,9 @@ class Welcome extends Component{
                 <button onClick={this.retrieveWelcomeMessage} 
                     className="btn btn-success">Get Welcome message</button>
             </div>
+            <div className="container">
+                {this.state.welcomeMessage}
+            </div>
             </>
         )
     }
@@ -28,16 +36,23 @@ class Welcome extends Component{
     retrieveWelcomeMessage() {
         // HelloWorldService.executeHelloWorldService()
         // .then(response => console.log(response))
-        HelloWorldService.executeHelloWorldBeanService()
-        .then(response => console.log(response))
-        //.catch()
+
+        // HelloWorldService.executeHelloWorldBeanService()
+        // .then(response => console.log(response))
+
+        HelloWorldService.executeHelloWorldPathVariableService(this.props.match.params.name)
+        .then(response => this.handleSuccessfulResponse(response))
+        .catch(error => this.handleError(error))
     }
 
     handleSuccessfulResponse(response) {
         console.log(response);
         this.setState({welcomeMessage: response.data.message})
     }
-
+    handleError(error) {
+        console.log(error.response);
+        this.setState({welcomeMessage: error.response.data.message})
+    }
 }
 
 export default Welcome
