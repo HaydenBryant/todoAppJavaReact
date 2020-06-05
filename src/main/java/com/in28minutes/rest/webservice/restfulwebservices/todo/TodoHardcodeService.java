@@ -1,13 +1,13 @@
 package com.in28minutes.rest.webservice.restfulwebservices.todo;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 
-@Component
+@Service
 public class TodoHardcodeService {
     private static List<Todo> todos = new ArrayList<>();
     private static int idCounter = 0;
