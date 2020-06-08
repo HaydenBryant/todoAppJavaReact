@@ -10,14 +10,24 @@ class TodoComponent extends Component {
             description : 'Learn Forms',
             targetDate : moment(new Date()).format('YYYY-MM-DD')
         }
+
+        this.onSubmit = this.onSubmit.bind(this)
+    }
+
+    onSubmit(values) {
+        console.log(values)
     }
 
     render() {
+        let {description, targetDate} = this.state
         return (
             <div>
                 <h1>Todo</h1>
                 <div className="container" >
-                    <Formik>
+                    <Formik 
+                        initialValues={{description, targetDate}}
+                        onSubmit={this.onSubmit}
+                    >
                         {
                             (props) => (
                                 <Form>
