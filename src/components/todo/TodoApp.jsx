@@ -8,6 +8,7 @@ import Footer from './Footer.jsx'
 import Logout from './Logout.jsx'
 import Error from './Error.jsx'
 import Welcome from './Welcome.jsx'
+import TodoComponent from './TodoComponent.jsx'
 
 
 class TodoApp extends Component {
@@ -21,6 +22,7 @@ class TodoApp extends Component {
                             <Route path="/" exact component={Login} />
                             <Route path="/login" component={Login} />
                             <AuthenticatedRoute path="/welcome/:name" component={Welcome} />
+                            <AuthenticatedRoute path="/todos/:id" component={TodoComponent} />
                             <AuthenticatedRoute path="/todos" component={ListTodosComponent} />
                             <AuthenticatedRoute path="/logout" component={Logout} />
                             <Route component={Error} />
