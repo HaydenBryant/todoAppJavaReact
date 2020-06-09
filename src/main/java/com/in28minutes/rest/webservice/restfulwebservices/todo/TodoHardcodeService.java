@@ -23,8 +23,8 @@ public class TodoHardcodeService {
     }
 
     public Todo saveTodo(Todo todo) {
-        if(todo.getId() == -1){
-            todo.setId(++idCounter)
+        if(todo.getId() == -1 || todo.getId() == 0){
+            todo.setId(++idCounter);
             todos.add(todo);
         } else {
             deleteById(todo.getId());
