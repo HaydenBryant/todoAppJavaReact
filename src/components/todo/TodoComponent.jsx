@@ -18,11 +18,16 @@ class TodoComponent extends Component {
     }
 
     componentDidMount() {
+
+        if(this.state.id === -1){
+            return
+        }
+
         let username = AuthenticationService.getLoggedInUsername()
         TodoDataService.retrieveTodo(username, this.state.id)
             .then(response => this.setState({
                 description: response.data.description,
-                targetDate: moment(response.data.targetDate).format('YYY-MM-DD')
+                targetDate: moment(response.data.targetDate).format('YYYY-MM-DD')
             }))
     }
 
@@ -41,7 +46,23 @@ class TodoComponent extends Component {
     }
 
     onSubmit(values) {
-        console.log(values)
+        let username = AuthenticationService.getLoggedInUsername()
+
+        let todo = {
+            id: this.state.id,
+            description: values.description,
+            targetDate: values.targetDate
+        }
+
+        if(this.state.id === -1){
+            TodoDataService.createTodo(username, todo)
+                .then(() => this.props.history.push('/todos'))
+
+        } else {
+
+            TodoDataService.updateTodo(username, this.state.id, todo)
+                .then(() => this.props.history.push('/todos'))
+        }
     }
 
     render() {
