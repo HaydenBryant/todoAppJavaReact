@@ -46,12 +46,21 @@ class Welcome extends Component{
     }
 
     handleSuccessfulResponse(response) {
-        console.log(response);
+        console.log(response)
         this.setState({welcomeMessage: response.data.message})
     }
     handleError(error) {
-        console.log(error.response);
-        this.setState({welcomeMessage: error.response.data.message})
+        console.log(error.response)
+
+        let errorMessage = ""
+
+        if(error.message) errorMessage += error.message
+        
+        if(error.response && error.response.data) {
+            errorMessage += error.response.data.message
+        }
+        
+        this.setState({welcomeMessage: errorMessage})
     }
 }
 
