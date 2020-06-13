@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import AuthenticationService from './AuthenticationService.js'
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router'
 
 
 class Header extends Component {
     render() {
-        const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
+        const isUserLoggedIn = AuthenticationService.isUserLoggedIn()
         return (
             <header>
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark">

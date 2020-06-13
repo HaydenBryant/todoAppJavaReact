@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 import AuthenticationService from './AuthenticationService.js'
 import TodoDataService from '../../api/todo/TodoDataService.js'
 import moment from 'moment'
@@ -24,12 +24,12 @@ class ListTodosComponent extends Component {
         console.log('shouldUpdate')
         console.log(nextProps)
         console.log(nextState)
-        return true;
+        return true
     }
 
     componentDidMount() {
         console.log("componentDidMount")
-        this.refreshTodos();
+        this.refreshTodos()
     }
 
     refreshTodos() {
