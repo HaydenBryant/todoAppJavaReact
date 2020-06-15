@@ -38,7 +38,7 @@ public class TodoHardcodeService {
 
         if(todo == null) return null;
 
-        todos.remove(todo);
+//        todos.remove(todo);
 
         if (todos.remove(todo)){
             return todo;
