@@ -33,7 +33,7 @@ class ListTodosComponent extends Component {
     }
 
     refreshTodos() {
-        let username = AuthenticationService.getLoggedInUsername
+        let username = AuthenticationService.getLoggedInUsername()
         TodoDataService.retrieveAllTodos(username)
             .then(
                 response => {
@@ -45,13 +45,13 @@ class ListTodosComponent extends Component {
     deleteTodoClicked(id){
         let username = AuthenticationService.getLoggedInUsername()
         TodoDataService.deleteTodo(username, id)
-        .then (
-            response => {
-                // console.log(response.data)
-                this.setState({ message : `Delete of todo ${id} successful`})
-                this.refreshTodos()
-            }
-        )
+            .then (
+                response => {
+                    console.log(response.data)
+                    this.setState({ message : `Delete of todo ${id} successful`})
+                    this.refreshTodos()
+                }
+            )
     }
 
     addTodoClicked(){
