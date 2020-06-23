@@ -34,10 +34,12 @@ public class TodoJpaResource {
     }
 
     @DeleteMapping("/jpa/users/{username}/todos/{id}")
-    public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable long id) {
+    public ResponseEntity<Void> deleteTodo(
+            @PathVariable String username, @PathVariable long id) {
+
         todoJpaRepository.deleteById(id);
 
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/jpa/users/{username}/todos/{id}")
